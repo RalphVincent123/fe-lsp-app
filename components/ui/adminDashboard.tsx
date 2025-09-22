@@ -1,6 +1,5 @@
 import styles from "@/styles/adminDashboard.module.scss";
 import TableContent from "./tableContent";
-import { db } from "@/lib/prisma";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import UserListstable from "./UserListstable";

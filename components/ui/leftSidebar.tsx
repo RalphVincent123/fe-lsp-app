@@ -2,13 +2,12 @@
 import styles from "@/styles/leftSideBar.module.scss";
 import Link from "next/link";
 import { IoHome } from "react-icons/io5";
-import { IoSearchOutline } from "react-icons/io5";
 import { IoMdNotifications } from "react-icons/io";
 import Image from "next/image";
 import sourceImage from "@/public/icons8-user.svg";
 import { SignOutButton } from "./signOut";
 import { Projects_Names, UserRole } from "@prisma/client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NotificationPanel from "./NotificationPanel";
 
 interface sideBarProps {

@@ -64,7 +64,7 @@ export default async function FeedBanner() {
                     Projects_Names.PROJECT_C,
                   ].includes(user?.projects)
                 )
-                .map((user: any) => (
+                .map((user: User) => (
                   <div key={user.id} className={styles.sidebarItem}>
                     <div className={styles.accountInfo}>
                       <Image
@@ -83,7 +83,7 @@ export default async function FeedBanner() {
                 ))}
         </div>
         <footer>
-          <p>&copy; 2025 NEXTJS 15</p>
+          <p>&copy; 2025 ActivityPrism</p>
         </footer>
       </div>
     </section>

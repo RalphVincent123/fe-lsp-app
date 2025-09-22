@@ -1,22 +1,18 @@
 import LeftsideBar from "@/components/ui/leftSidebar";
-// import styles from "../page.module.css";
 import styles from "../../page.module.css";
 import FeedBanner from "@/components/ui/FeedBanner";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import WidgetGenerator from "@/widgets/WidgetGenerator";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 type Props = {
   params: { slug?: string[] };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug = [] } = await params;
 
   const slugPath = slug.join("/");

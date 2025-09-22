@@ -5,11 +5,14 @@ import SearchResults from "../searchResults";
 import Image from "next/image";
 import Link from "next/link";
 import sourceImage from "@/public/icons8-user.svg";
+import { UserRole } from "@prisma/client";
 
 type User = {
   id: string;
   name: string;
   email: string;
+  image?: string;
+  role?: UserRole;
 };
 
 type Post = {
@@ -46,7 +49,7 @@ export default async function SearchFeed({
         </div>
         <h2>Members</h2>
         <div>
-          {records.map((user: any) => (
+          {records.map((user: User) => (
             <div key={user.id} className={styles.sidebarItem}>
               <div className={styles.accountInfo}>
                 <Image

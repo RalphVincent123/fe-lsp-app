@@ -202,7 +202,7 @@ export default function FormsUpdates({ user }: UpdateUserProps) {
 
         {/* Submit Button */}
         <div className={styles.buttonContainer}>
-          <button type="submit" className={styles.button}>
+          <button type="submit" disabled={isPending} className={styles.button}>
             Update info
           </button>
         </div>

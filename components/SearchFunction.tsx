@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import styles from "@/styles/search.module.scss";
 import { CiSearch } from "react-icons/ci";
-import SearchResults from "./searchResults";
 import { useRouter } from "next/navigation";
 
 function SearchFunction() {

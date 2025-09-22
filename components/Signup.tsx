@@ -19,9 +19,9 @@ export default function SignUpForm() {
 
   const [project, setProject] = useState("");
 
-  function handlePickImage() {
-    imageInput.current?.click();
-  }
+  // function handlePickImage() {
+  //   imageInput.current?.click();
+  // }
 
   function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files ? e.target.files[0] : null;

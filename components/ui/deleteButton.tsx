@@ -23,6 +23,7 @@ export function DeleteUserButton({ userId }: DeleteUserProps) {
 
   return (
     <button
+      disabled={IsPending}
       style={{
         background: "red",
         color: "white",

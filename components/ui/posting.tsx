@@ -56,7 +56,7 @@ export default function Posting() {
           />
         </div>
 
-        <button type="submit" className={styles.button}>
+        <button type="submit" disabled={isPending} className={styles.button}>
           Submit
         </button>
       </form>

@@ -103,6 +103,7 @@ function DeleteModal({ setShowModal, postId }: DeleteModal) {
               Delete
             </button>
             <button
+              disabled={isPending}
               className={styler.closebtn}
               onClick={() => setShowModal(false)}
             >

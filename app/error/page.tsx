@@ -1,5 +1,4 @@
 import styles from "./ErrorPage.module.scss";
-import Link from "next/link";
 
 interface PageProps {
   searchParams: Promise<{ error: string }>;

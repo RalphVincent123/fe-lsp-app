@@ -54,7 +54,9 @@ export default function ForgotPasswordForm() {
             />
           </div>
           <div className={style.submitButton}>
-            <button className={style.buttonLogin}>Send</button>
+            <button disabled={isPending} className={style.buttonLogin}>
+              Send
+            </button>
           </div>
         </div>
       </form>

@@ -1,6 +1,5 @@
 import LeftsideBar from "@/components/ui/leftSidebar";
 import styles from "../page.module.css";
-import FeedBanner from "@/components/ui/FeedBanner";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -37,7 +36,12 @@ export default async function page({
   return (
     <div className={styles.dashboardPage}>
       <main className={styles.mainContainer}>
-        <LeftsideBar user={session.user} />
+        <LeftsideBar
+          user={{
+            ...session.user,
+            projects: Object.values(session.user.projects),
+          }}
+        />
         <div style={{ width: "100%", marginLeft: "22%" }}>
           <SearchFeed loading={false} results={results} />
         </div>

@@ -7,7 +7,6 @@ import Link from "next/link";
 import sourceImage from "@/public/icons8-user.svg";
 import Image from "next/image";
 import { Projects_Names, UserRole } from "@prisma/client";
-import { role } from "better-auth/plugins";
 
 interface User {
   id: string;
@@ -60,9 +59,6 @@ export default function AccountsTable({ users }: AccountsTableProps) {
       role: user.role,
     });
   };
-
-  const PROJECTS = Projects_Names;
-  const userROLE = UserRole;
   return (
     <div className={style.main}>
       <div className={style.FirstRowContainer}>
