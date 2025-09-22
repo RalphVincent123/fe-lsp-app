@@ -1,0 +1,40 @@
+.roleSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 200px;
+
+  // custom arrow
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+
+  &:hover {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+  }
+
+  &:disabled {
+    background-color: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+    border-color: #e5e7eb;
+  }
+}

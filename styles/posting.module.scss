@@ -1,0 +1,134 @@
+
+.statusBox {
+  display: flex;
+  background: #1b1a1a;
+  border-radius: 12px;
+  padding: 12px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 1280px) {
+    padding: 10px;
+    .textarea {
+      font-size: 13px;
+    }
+    .button {
+      font-size: 13px;
+      padding: 5px 14px;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .task {
+    font-weight: bold;
+    color: white;
+    margin: 5px 0 20px;
+  }
+}
+
+.userInput {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  .labelTitle {
+    margin-bottom: 30px;
+    color: white;
+    font-weight: 600;
+  }
+
+  .title {
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding: 10px;
+  }
+}
+
+.profilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.textarea {
+  flex: 1;
+  background: #f0f2f5;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  outline: none;
+  min-height: 40px;
+  max-height: 150px;
+
+  &::placeholder {
+    color: #65676b;
+  }
+}
+
+.button {
+  align-self: flex-end;
+  background: #1877f2; // Facebook blue style
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 8px;
+
+  &:hover:not(:disabled) {
+    background: #166fe5;
+  }
+
+  &:disabled {
+    background: #ccd0d5;
+    cursor: not-allowed;
+  }
+}
+
+/* 💻 Large screens (≥1280px) */
+@media (max-width: 1460px) {
+  .textarea {
+    height: 100%;
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+
+  .button {
+    font-size: 15px;
+    padding: 8px 20px;
+  }
+}
+@media (max-width: 480px) {
+  .statusBox {
+    padding: 8px;
+  }
+
+  .profilePic {
+    width: 32px;
+    height: 32px;
+  }
+
+  .textarea {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  .button {
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+}

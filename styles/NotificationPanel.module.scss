@@ -1,0 +1,165 @@
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 9998; /* nasa ilalim lang ng drawer */
+}
+
+/* Drawer */
+.notifications {
+  position: fixed;
+  top: 0;
+  right: -420px; /* hidden by default */
+  background: #fff;
+  border-left: 1px solid #e5e7eb;
+  width: 420px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 9999; /* pinakataas */
+
+  .triggerWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 18px;
+  text-align: center;
+}
+
+  &.open {
+    right: 0; /* slide in */
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #111827;
+    }
+  }
+
+  .tabs {
+    display: flex;
+    gap: 12px;
+    padding: 0 16px;
+    margin-bottom: 12px;
+
+    .tab {
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #6b7280;
+      background: transparent;
+      transition: 0.2s;
+
+      &.active {
+        background: #f3f4f6;
+        color: #111827;
+      }
+    }
+  }
+
+  .list {
+    flex: 1;
+    overflow-y: auto;
+
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid #f3f4f6;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #f9fafb;
+      }
+
+      .content {
+        flex: 1;
+
+        .title {
+          font-size: 14px;
+          font-weight: 500;
+          color: #111827;
+          margin-bottom: 4px;
+
+          .highlight {
+            font-weight: 600;
+            color: #000;
+          }
+        }
+
+        .time {
+          font-size: 12px;
+          color: #9ca3af;
+        }
+
+        .message {
+          margin-top: 6px;
+          padding: 10px 12px;
+          border-radius: 6px;
+          font-size: 14px;
+          line-height: 1.4;
+
+          &.reply {
+            background: #ecfdf5;
+            color: #065f46;
+          }
+
+          &.replyWarning {
+            background: #eef2ff;
+            color: #3730a3;
+          }
+
+          &.file {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            color: #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+
+        .replyBtn {
+          margin-top: 6px;
+          font-size: 12px;
+          font-weight: 500;
+          color: #2563eb;
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

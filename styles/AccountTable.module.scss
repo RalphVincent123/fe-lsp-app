@@ -1,0 +1,177 @@
+.main {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  gap: 50px;
+  background: #a8a8a8;
+  flex-direction: column;
+
+  .FirstRowContainer {
+    width: 100%;
+    background: white;
+    padding: 20px;
+
+    .titles {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 25px;
+
+      .breadcrumbs {
+        display: flex;
+        align-items: center;
+
+        .icon {
+          font-size: 14px;
+          margin: 0 5px;
+        }
+      }
+
+      .ctaButton {
+        padding: 10px 30px;
+        font-size: 14px;
+        background: #04ba5c;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          color: #000;
+          background: #fff;
+          border: 1px solid #04ba5c;
+        }
+      }
+    }
+  }
+
+  .SecondContainer {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+    overflow-x: auto; // ✅ important para sa maliit na screen
+
+    table {
+      width: 100%;
+      min-width: 600px; // ✅ maiwasan mag-collapse agad
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: #f3f6fa;
+      color: #6a8caf;
+      text-align: left;
+    }
+
+    thead th {
+      padding: 14px 16px;
+      font-size: 14px;
+      border-bottom: 2px solid #e6edf5;
+      white-space: nowrap; // ✅ hindi mag wrap header
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #e6edf5;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #f9fbfd;
+      }
+    }
+
+    td {
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #333;
+      vertical-align: top;
+    }
+
+    td:first-child {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    td a {
+      color: #4caf50;
+      text-decoration: none;
+      margin: 0 6px;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: #e0f7ec;
+      color: #28a745;
+      font-size: 12px;
+      margin-left: 6px;
+    }
+  }
+
+  /* ✅ Responsive adjustments */
+  @media (max-width: 660px) {
+    .FirstRowContainer {
+
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+
+        .ctaButton {
+          margin-top: 25px;
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+    .SecondContainer {
+        width: 100%;
+    }
+  }
+
+//   @media (max-width: 576px) {
+//     .SecondContainer {
+//       table {
+//         min-width: unset; // alisin yung fixed min-width
+//       }
+//       thead {
+//         display: none; // tanggalin header
+//       }
+//       tbody tr {
+//         display: block;
+//         margin-bottom: 15px;
+//         border: 1px solid #e6edf5;
+//         border-radius: 8px;
+//         padding: 10px;
+//       }
+//       tbody td {
+//         display: flex;
+//         justify-content: space-between;
+//         padding: 8px;
+//         font-size: 13px;
+
+//         &::before {
+//           content: attr(data-label); // ilagay column title
+//           font-weight: bold;
+//           color: #6a8caf;
+//         }
+//       }
+//     }
+//   }
+}

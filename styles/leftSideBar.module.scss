@@ -1,0 +1,124 @@
+.main {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  border-right: 1px solid #262626;
+  padding: 20px;
+  color: white;
+  background: #0a0a0a;
+  transition: all 0.3s ease;
+  z-index: 9999;
+
+  .logo {
+    font-size: 1.5rem;
+    font-family: "Pacifico", cursive;
+  }
+
+  nav {
+    margin-top: 25px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  nav a {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    padding: 15px 10px;
+    gap: 15px;
+    border-radius: 10px;
+    color: inherit;
+    transition: background 0.2s;
+  }
+
+  nav a .icons {
+    font-size: 1.3rem;
+  }
+
+  nav a .ImageContainer {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    // @media (max-width: 1280px) {
+    //   width: 0px;
+    //   height: 60px;
+    // }
+  }
+
+  nav a:hover {
+    background-color: #1a1a1a;
+  }
+
+  nav .active {
+    font-weight: 600;
+  }
+
+  .naming {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .notificationWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+  
+}
+
+
+/* 📱 Mobile (≤480px) */
+@media (max-width: 1280px) {
+    .main {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    height: 70px;
+    border-right: none;
+    border-top: 1px solid #262626;
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .logo {
+      display: none; // hide logo for mobile
+    }
+
+    nav {
+      display: flex;
+      flex-direction: row;
+      margin: 0;
+      width: 100%;
+      justify-content: space-around;
+    }
+
+    nav a {
+      margin: 0;
+      // padding: 10px;
+      flex-direction: column;
+      font-size: 0.75rem;
+
+    }
+
+    nav a .icons {
+      font-size: 1.2rem;
+    }
+    hr {
+      display: none;
+    }
+    .naming {
+      display: none;
+    }
+  }
+}
