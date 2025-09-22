@@ -27,7 +27,7 @@ export default function NotificationPanel({
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
-  const [notifications, setNotifications] = useState<any[]>([]);
+  const [notifications, setNotifications] = useState<Post[]>([]);
 
   useEffect(() => {
     async function fetchNotifications() {

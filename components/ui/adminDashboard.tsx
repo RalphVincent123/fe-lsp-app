@@ -4,6 +4,25 @@ import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import UserListstable from "./UserListstable";
 import BarChart from "./BarChart";
+import { Projects_Names, UserRole } from "@prisma/client";
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  image?: string;
+  role?: UserRole;
+  projects?: Projects_Names;
+};
+type Post = {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+  userid: string;
+  user?: User;
+};
 
 export default async function AdminDashboard() {
   const headerlist = await headers();
@@ -22,12 +41,12 @@ export default async function AdminDashboard() {
   );
   const Postsrecords = await PostsData.json();
 
-  const mappingPosts = Postsrecords.map((record: any) => record.userid);
+  const mappingPosts = Postsrecords.map((record: Post) => record.userid);
 
   const uniqueActiveUsers = [...new Set(mappingPosts)];
 
   const uniqueProjectsCount = new Set(
-    records.map((user: any) => user.projects).filter(Boolean)
+    records.map((user: User) => user.projects).filter(Boolean)
   ).size;
 
   return (

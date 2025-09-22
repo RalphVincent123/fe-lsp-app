@@ -1,6 +1,25 @@
 import styles from "@/styles/tableContent.module.scss";
 import sourceImage from "@/public/icons8-user.svg";
 import Image from "next/image";
+import { Projects_Names } from "@prisma/client";
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  projects: Projects_Names;
+  image?: string;
+};
+
+type Post = {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+  userid: string;
+  user?: User;
+};
 
 export default async function TableContent() {
   const PostsData = await fetch(
@@ -14,7 +33,7 @@ export default async function TableContent() {
     { name: string; posts: number; image?: string }
   > = {};
 
-  Postsrecords.forEach((record: any) => {
+  Postsrecords.forEach((record: Post) => {
     const userId = record.userid;
     const userName = record.user?.name || "Unknown User";
     const image = record.user?.image;

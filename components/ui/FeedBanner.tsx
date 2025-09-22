@@ -39,7 +39,7 @@ export default async function FeedBanner() {
         <h2>Members</h2>
         <div>
           {session?.user.role === "ADMIN"
-            ? records.map((user: any) => (
+            ? records.map((user: User) => (
                 <div key={user.id} className={styles.sidebarItem}>
                   <div className={styles.accountInfo}>
                     <Image

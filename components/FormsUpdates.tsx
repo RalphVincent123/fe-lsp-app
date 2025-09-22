@@ -8,6 +8,7 @@ import { UserRole } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { updateUser } from "@/lib/auth-client";
+import type { ImageLoaderProps } from "next/image";
 
 interface UpdateUserProps {
   user: {
@@ -28,7 +29,10 @@ export default function FormsUpdates({ user }: UpdateUserProps) {
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
 
-  function imageLoader(config: any) {
+  // function imageLoader(config: any) {
+  //   return config.src;
+  // }
+  function imageLoader(config: ImageLoaderProps): string {
     return config.src;
   }
 
@@ -82,6 +86,7 @@ export default function FormsUpdates({ user }: UpdateUserProps) {
           return toast.error("Image upload failed");
         }
       } catch (error) {
+        console.log(error);
         return toast.error("Image upload failed");
       }
     }

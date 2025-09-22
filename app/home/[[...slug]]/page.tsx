@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slugPath = slug.join("/");
 
   const pageMetadata = await fetch(
-    `http://localhost:3000/api/fetchMetaData?slug=${slugPath}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/fetchMetaData?slug=${slugPath}`,
     { cache: "no-store" }
   ).then((res) => res.json());
 

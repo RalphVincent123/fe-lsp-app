@@ -9,6 +9,7 @@ import { SignOutButton } from "./signOut";
 import { Projects_Names, UserRole } from "@prisma/client";
 import { useState } from "react";
 import NotificationPanel from "./NotificationPanel";
+import type { ImageLoaderProps } from "next/image";
 
 interface sideBarProps {
   user: {
@@ -26,10 +27,9 @@ interface sideBarProps {
 export default function LeftsideBar({ user }: sideBarProps) {
   const [open, setOpen] = useState(false);
 
-  function imageLoader(config: any) {
+  function imageLoader(config: ImageLoaderProps): string {
     return config.src;
   }
-
   return (
     <div className={styles.main}>
       <span className={styles.logo}>ActivityGram</span>

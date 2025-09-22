@@ -2,6 +2,16 @@ import React from "react";
 import styles from "@/styles/tableContent.module.scss";
 import sourceImage from "@/public/icons8-user.svg";
 import Image from "next/image";
+import { Projects_Names, UserRole } from "@prisma/client";
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  projects: Projects_Names;
+  image?: string;
+  role?: UserRole;
+};
 
 export default async function UserListstable() {
   const PostsData = await fetch(
@@ -9,12 +19,12 @@ export default async function UserListstable() {
   );
   const Postsrecords = await PostsData.json();
 
-  const ExceptAdmin = Postsrecords.filter((ant: any) => ant.role !== "ADMIN");
+  const ExceptAdmin = Postsrecords.filter((ant: User) => ant.role !== "ADMIN");
   return (
     <div className={styles.tableContainer}>
       <h2 className={styles.title}>List of Users</h2>
       <div className={styles.list}>
-        {ExceptAdmin.map((users: any) => (
+        {ExceptAdmin.map((users: User) => (
           <div key={users.id} className={styles.row}>
             <div className={styles.info}>
               <Image

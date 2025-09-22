@@ -86,7 +86,7 @@ export default function AccountsTable({ users }: AccountsTableProps) {
             </tr>
           </thead>
           <tbody>
-            {users.map((users: any) =>
+            {users.map((users: User) =>
               isEditId === users.id ? (
                 <tr key={users.id}>
                   <td>

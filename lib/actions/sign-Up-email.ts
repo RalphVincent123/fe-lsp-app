@@ -29,8 +29,11 @@ export async function signUpEmailAction(formData: FormData) {
     let ImageUrl;
     try {
         ImageUrl = await uploadImage(Image)
-    } catch(error) {
-        return {error: "Image Upload Failed. post was not created. Please try again later."};
+    } catch(error: unknown) {
+        if (error instanceof Error) {
+            console.error("Image upload failed:", error.message);
+        }
+        return { error: "Image Upload Failed. Post was not created. Please try again later." };
     }
 
     try {

@@ -4,6 +4,23 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import SearchFeed from "@/components/ui/searchFeed";
+import { UserRole } from "@prisma/client";
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  image?: string;
+  role?: UserRole;
+};
+type Post = {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+  user?: User;
+};
 
 export default async function page({
   searchParams,
@@ -20,7 +37,7 @@ export default async function page({
 
   const params = await searchParams;
   const query = params?.q || "";
-  let results: any[] = [];
+  let results: Post[] = [];
 
   if (query) {
     const res = await fetch(

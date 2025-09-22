@@ -3,22 +3,39 @@ import React, { useState } from "react";
 import styles from "@/styles/search.module.scss";
 import { CiSearch } from "react-icons/ci";
 import { useRouter } from "next/navigation";
+// import { UserRole } from "@prisma/client";
+
+// type User = {
+//   id: string;
+//   name: string;
+//   email: string;
+//   image?: string;
+//   role?: UserRole;
+// };
+// type Post = {
+//   id: string;
+//   title: string;
+//   content: string;
+//   createdAt: Date;
+//   updatedAt: Date;
+//   user?: User;
+// };
 
 function SearchFunction() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [results, setResults] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
+  // const [results, setResults] = useState<Post[]>([]);
+  // const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    // setLoading(true);
 
-    const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
-    const data = await res.json();
+    // const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
+    // const data = await res.json();
 
-    setResults(data);
-    setLoading(false);
+    // setResults(data);
+    // setLoading(false);
     router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
   };
 
@@ -35,17 +52,6 @@ function SearchFunction() {
           <CiSearch />
         </button>
       </form>
-      {/* {loading && <p>Searching...</p>}
-      <SearchResults loading={loading} results={results} /> */}
-
-      {/* <ul className="space-y-4">
-        {results.map((post) => (
-          <li key={post.id} className="border-b pb-2">
-            <h2 className="font-bold text-lg">{post.title}</h2>
-            <p className="text-gray-600">{post.content}</p>
-          </li>
-        ))}
-      </ul> */}
     </>
   );
 }

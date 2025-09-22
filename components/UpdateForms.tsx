@@ -17,12 +17,12 @@ function UpdateForms({
   content,
 }: UpdateFormsProps) {
   const [isPending, setIsPending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   async function HandleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     setIsPending(true);
-    setError(null);
+    // setError(null);
 
     const formData = new FormData(evt.target as HTMLFormElement);
     const title = String(formData.get("title"));
