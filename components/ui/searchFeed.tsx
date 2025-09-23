@@ -5,7 +5,9 @@ import SearchResults from "../searchResults";
 import Image from "next/image";
 import Link from "next/link";
 import sourceImage from "@/public/icons8-user.svg";
-import { UserRole } from "@prisma/client";
+import { Projects_Names, UserRole } from "@prisma/client";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 
 type User = {
   id: string;
@@ -13,6 +15,7 @@ type User = {
   email: string;
   image?: string;
   role?: UserRole;
+  projects?: Projects_Names;
 };
 
 type Post = {
@@ -33,6 +36,9 @@ export default async function SearchFeed({
   loading,
   results,
 }: SearchResultsProps) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
   const resData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/records`);
   const records = await resData.json();
 
@@ -49,26 +55,28 @@ export default async function SearchFeed({
         </div>
         <h2>Members</h2>
         <div>
-          {records.map((user: User) => (
-            <div key={user.id} className={styles.sidebarItem}>
-              <div className={styles.accountInfo}>
-                <Image
-                  src={user.image ? user.image : sourceImage}
-                  width={50}
-                  height={50}
-                  alt="Profile Pic"
-                />
-                <div>
-                  <Link href="#">{user.name}</Link>
-                  <p>{user.email}</p>
+          {records
+            .filter((posts: User) => posts.projects === session?.user.projects)
+            .map((user: User) => (
+              <div key={user.id} className={styles.sidebarItem}>
+                <div className={styles.accountInfo}>
+                  <Image
+                    src={user.image ? user.image : sourceImage}
+                    width={50}
+                    height={50}
+                    alt="Profile Pic"
+                  />
+                  <div>
+                    <Link href="#">{user.name}</Link>
+                    <p>{user.email}</p>
+                  </div>
                 </div>
+                <Link href="#">{user.role}</Link>
               </div>
-              <Link href="#">{user.role}</Link>
-            </div>
-          ))}
+            ))}
         </div>
         <footer>
-          <p>&copy; 2025 sadasdasdasd</p>
+          <p>&copy; 2025 ActivityPrism</p>
         </footer>
       </div>
     </section>

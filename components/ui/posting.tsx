@@ -8,12 +8,13 @@ import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { Projects_Names } from "@prisma/client";
 
-type UserProps = {
-  projects?: Projects_Names | undefined;
-};
+// type UserProps = {
+//   projects?: Projects_Names | undefined;
+// };
 
-export default function Posting({ projects }: UserProps) {
+export default function Posting() {
   const [isPending, setIsPending] = useState(false);
+  const [textValue, setTextValue] = useState("");
   const router = useRouter();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -37,6 +38,7 @@ export default function Posting({ projects }: UserProps) {
 
     if (textareaRef.current) {
       textareaRef.current.value = "";
+      setTextValue("");
     }
   }
   return (
@@ -58,12 +60,13 @@ export default function Posting({ projects }: UserProps) {
             placeholder={`What is your activities today ?`}
             className={styles.textarea}
             rows={1}
+            onChange={(e) => setTextValue(e.target.value)}
           />
         </div>
 
         <button
           type="submit"
-          disabled={isPending || !projects}
+          disabled={isPending || textValue.trim() === ""}
           className={styles.button}
         >
           Submit

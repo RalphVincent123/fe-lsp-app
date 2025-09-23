@@ -7,6 +7,7 @@ type User = {
   id: string;
   name: string;
   email: string;
+  image?: string;
 };
 
 type Post = {
@@ -23,7 +24,14 @@ type SearchResultsProps = {
   results: Post[];
 };
 
-function SearchResults({ results }: SearchResultsProps) {
+function SearchResults({ loading, results }: SearchResultsProps) {
+  if (loading) {
+    return <p className={styles.noResults}>⏳ Loading...</p>;
+  }
+
+  if (!results || results.length === 0) {
+    return <p className={styles.noResults}>❌ Result not found</p>;
+  }
   return (
     <div className={styles.posts}>
       {results.map((rase: Post) => {
@@ -36,7 +44,12 @@ function SearchResults({ results }: SearchResultsProps) {
             <div className={styles.postHeader}>
               <div className={styles.userDetails}>
                 <div className={styles.imagesContain} id={styles.newStatus}>
-                  <Image src={sourceImage} alt="Profile-Pic" />
+                  <Image
+                    src={rase.user?.image || sourceImage}
+                    alt="Profile-Pic"
+                    width={50}
+                    height={50}
+                  />
                 </div>
                 <div className={styles.userInfo}>
                   <span>

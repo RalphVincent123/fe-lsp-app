@@ -4,7 +4,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import SearchFeed from "@/components/ui/searchFeed";
-import { UserRole } from "@prisma/client";
+import { Projects_Names, UserRole } from "@prisma/client";
 
 type User = {
   id: string;
@@ -12,6 +12,7 @@ type User = {
   email: string;
   image?: string;
   role?: UserRole;
+  project?: Projects_Names;
 };
 type Post = {
   id: string;

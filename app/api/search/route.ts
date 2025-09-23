@@ -12,6 +12,41 @@ export async function GET(req: Request) {
       return NextResponse.json([]);
     }
 
+    // const results = await db.post.findMany({
+    //   where: {
+    //     AND: [
+    //       {
+    //         OR: [
+    //           { title: { contains: query, mode: "insensitive" } },
+    //           { content: { contains: query, mode: "insensitive" } },
+    //           { user: { name: { contains: query, mode: "insensitive" } } },
+    //         ],
+    //       },
+    //       {
+    //          user:{
+    //           projects: { in: [Projects_Names.PROJECT_A, Projects_Names.PROJECT_B, Projects_Names.PROJECT_C] }
+    //          }
+    //       }
+    //     ]
+
+    //   },
+    //   include: {
+    //     user: {
+    //       select: {
+    //         id: true,
+    //         name: true,
+    //         email: true,
+    //         role: true,
+    //         projects: true,
+    //       },
+    //     },
+    //   },
+    //   orderBy: {
+    //     createdAt: "desc",
+    //   },
+    //   take: 20, // limit results
+    // });
+
     const results = await db.post.findMany({
       where: {
         AND: [
@@ -20,15 +55,30 @@ export async function GET(req: Request) {
               { title: { contains: query, mode: "insensitive" } },
               { content: { contains: query, mode: "insensitive" } },
               { user: { name: { contains: query, mode: "insensitive" } } },
+              { user: { email: { contains: query, mode: "insensitive" } } }, // search by email din
+              {
+                user: {
+                  projects: {
+                    in: Object.values(Projects_Names).filter((p) =>
+                      p.toLowerCase().includes(query.toLowerCase())
+                    ),
+                  },
+                },
+              }, // search by project name
             ],
           },
           {
-             user:{
-              projects: { in: [Projects_Names.PROJECT_A, Projects_Names.PROJECT_B, Projects_Names.PROJECT_C] }
-             }
-          }
-        ]
-
+            user: {
+              projects: {
+                in: [
+                  Projects_Names.PROJECT_A,
+                  Projects_Names.PROJECT_B,
+                  Projects_Names.PROJECT_C,
+                ],
+              },
+            },
+          },
+        ],
       },
       include: {
         user: {
@@ -41,12 +91,9 @@ export async function GET(req: Request) {
           },
         },
       },
-      orderBy: {
-        createdAt: "desc",
-      },
-      take: 20, // limit results
+      orderBy: { createdAt: "desc" },
+      take: 20,
     });
-
     return NextResponse.json(results);
   } catch (error) {
     console.error("Search error:", error);

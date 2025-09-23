@@ -185,6 +185,31 @@
   }
 }
 
+.noResults {
+  color: white; 
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin: 1.5rem 0;
+  // border: 1px dashed #ff7875;
+  border-radius: 12px;
+  background-color: #000000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+// optional fade-in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 // @media (max-width: 1024px) {
 //   .main {
 //     margin-left: 10%;

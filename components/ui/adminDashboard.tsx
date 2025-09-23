@@ -3,7 +3,7 @@ import TableContent from "./tableContent";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import UserListstable from "./UserListstable";
-import BarChart from "./BarChart";
+// import BarChart from "./BarChart";
 import { Projects_Names, UserRole } from "@prisma/client";
 
 type User = {
@@ -25,11 +25,11 @@ type Post = {
 };
 
 export default async function AdminDashboard() {
-  const headerlist = await headers();
+  // const headerlist = await headers();
 
-  const session = await auth.api.getSession({
-    headers: headerlist,
-  });
+  // const session = await auth.api.getSession({
+  //   headers: headerlist,
+  // });
 
   const resData = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/dashboard`
@@ -53,7 +53,7 @@ export default async function AdminDashboard() {
     <main className={styles.main}>
       <header className={styles.topbar}>
         <h1>Dashboard</h1>
-        <div className={styles.user}>👤 {session?.user.role}</div>
+        {/* <div className={styles.user}>👤 {session?.user.role}</div> */}
       </header>
 
       <section className={styles.cards}>
@@ -82,9 +82,9 @@ export default async function AdminDashboard() {
           <UserListstable />
         </div>
       </div>
-      <div className={styles.sections}>
+      {/* <div className={styles.sections}>
         <BarChart />
-      </div>
+      </div> */}
     </main>
   );
 }

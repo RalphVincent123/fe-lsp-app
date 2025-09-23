@@ -2,6 +2,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import styles from "@/styles/updatedForm.module.scss";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface UpdateFormsProps {
   setShowModal: Dispatch<SetStateAction<boolean>>;
@@ -13,11 +14,15 @@ interface UpdateFormsProps {
 function UpdateForms({
   setShowModal,
   postId,
-  title,
-  content,
+  // title,
+  // content,
+  title: initialTitle,
+  content: initialContent,
 }: UpdateFormsProps) {
   const [isPending, setIsPending] = useState(false);
-  // const [error, setError] = useState<string | null>(null);
+
+  const [title, setTitle] = useState(initialTitle || "");
+  const [content, setContent] = useState(initialContent || "");
   const router = useRouter();
   async function HandleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
@@ -40,11 +45,12 @@ function UpdateForms({
         }
       );
       if (!res.ok) throw new Error("Failed to update");
-
+      toast.success("Post updated successfully 🎉");
       setShowModal(false);
       router.refresh();
     } catch (err) {
       console.error(err);
+      toast.error("Something went wrong");
     } finally {
       setIsPending(false);
     }
@@ -53,12 +59,22 @@ function UpdateForms({
     <form onSubmit={HandleSubmit} className={styles["modal-form"]}>
       <label>
         <span>Title</span>
-        <input type="text" name="title" placeholder={title} />
+        <input
+          type="text"
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
       </label>
 
       <label>
         <span>Activities</span>
-        <textarea name="content" rows={6} placeholder={content} />
+        <textarea
+          name="content"
+          rows={6}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
       </label>
 
       <div className={styles["modal-actions"]}>

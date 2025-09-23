@@ -63,7 +63,10 @@ export default function LeftsideBar({ user }: sideBarProps) {
             </Link>
             {open && (
               <div className={styles.dropdownContent}>
-                <Link href="/home/profile">Profile</Link>
+                <Link href="/home/profile" className={styles.active}>
+                  <IoHome className={styles.icons} />
+                  Update Profile
+                </Link>
               </div>
             )}
             <NotificationPanel userid={user.id}>

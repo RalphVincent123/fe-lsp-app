@@ -70,11 +70,20 @@ export default async function FeedBanner() {
                         alt="Profile Pic"
                       />
                       <div>
-                        <Link href="#">{user.name}</Link>
+                        <span>{user.name}</span>
                         <p>{user.email}</p>
                       </div>
                     </div>
-                    <Link href="#">{user.role}</Link>
+                    <span
+                      style={{
+                        color: "#0000FF",
+                        fontWeight: "bold",
+                        fontSize: "12px",
+                        textTransform: "none",
+                      }}
+                    >
+                      {user.role}
+                    </span>
                   </div>
                 ))}
         </div>

@@ -15,6 +15,7 @@ export async function PostActions(formData: FormData) {
     if(!session?.user.id) throw new Error("Not logged in")
 
     const content = String(formData.get("PostArea"));
+    if (!content) return {error:"Please enter your Posts."};
 
     const title = "Activities";
 
