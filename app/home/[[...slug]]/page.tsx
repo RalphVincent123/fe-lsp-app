@@ -54,7 +54,7 @@ export default async function dashboardPage({
           <LeftsideBar
             user={{
               ...session.user,
-              projects: Object.values(session.user.projects),
+              projects: session.user.projects ? [session.user.projects] : [],
             }}
           />
           <div className={styles.baseSection}>

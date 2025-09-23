@@ -2,7 +2,7 @@
 
 import { auth, ErrorCode } from "../auth";
 import { APIError } from "better-auth/api";
-import { db } from "../prisma";
+// import { db } from "../prisma";
 import { Projects_Names } from "@prisma/client";
 import { uploadImage } from "../SignUpImageUpload/cloudinary";
 
@@ -42,13 +42,15 @@ export async function signUpEmailAction(formData: FormData) {
                 name,
                 email,
                 password,
+                projects: projectEnum,
+                image: ImageUrl,
             }
         })
         
-        await db.user.update({
-            where: { email },
-            data: { projects: projectEnum, image: ImageUrl },
-        });
+        // await db.user.update({
+        //     where: { email },
+        //     data: { projects: projectEnum, image: ImageUrl },
+        // });
         return {error: null};
         
     } catch (err) {

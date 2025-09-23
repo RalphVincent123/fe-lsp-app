@@ -32,7 +32,7 @@ export default async function page({
             <LeftsideBar
               user={{
                 ...session.user,
-                projects: Object.values(session.user.projects),
+                projects: session.user.projects ? [session.user.projects] : [],
               }}
             />
             <AdminDashboard />

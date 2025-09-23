@@ -21,7 +21,7 @@ async function ProfilePage() {
         <LeftsideBar
           user={{
             ...session.user,
-            projects: Object.values(session.user.projects),
+            projects: session.user.projects ? [session.user.projects] : [],
           }}
         />
         <div className={styles.baseSection}>

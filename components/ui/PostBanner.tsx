@@ -12,6 +12,7 @@ type User = {
   name: string;
   email: string;
   projects: Projects_Names;
+  image: string | null;
 };
 
 type Post = {
@@ -35,13 +36,7 @@ export default async function PostBanner() {
   return (
     <div className={styles.posts}>
       {Raser.filter(
-        (rase: Post) =>
-          rase.user?.projects &&
-          [
-            Projects_Names.PROJECT_A,
-            Projects_Names.PROJECT_B,
-            Projects_Names.PROJECT_C,
-          ].includes(rase.user.projects)
+        (rase: Post) => rase.user?.projects === session?.user.projects
       ).map((rase: Post) => {
         return (
           <div
@@ -53,7 +48,7 @@ export default async function PostBanner() {
               <div className={styles.userDetails}>
                 <div className={styles.imagesContain} id={styles.newStatus}>
                   <Image
-                    src={session?.user.image || sourceImage}
+                    src={rase.user?.image || sourceImage}
                     width={40}
                     height={40}
                     alt="Profile-Pic"

@@ -6,8 +6,13 @@ import { PostActions } from "@/lib/actions/PostAction";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { Projects_Names } from "@prisma/client";
 
-export default function Posting() {
+type UserProps = {
+  projects?: Projects_Names | undefined;
+};
+
+export default function Posting({ projects }: UserProps) {
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
 
@@ -56,7 +61,11 @@ export default function Posting() {
           />
         </div>
 
-        <button type="submit" disabled={isPending} className={styles.button}>
+        <button
+          type="submit"
+          disabled={isPending || !projects}
+          className={styles.button}
+        >
           Submit
         </button>
       </form>

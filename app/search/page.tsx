@@ -56,7 +56,7 @@ export default async function page({
         <LeftsideBar
           user={{
             ...session.user,
-            projects: Object.values(session.user.projects),
+            projects: session.user.projects ? [session.user.projects] : [],
           }}
         />
         <div style={{ width: "100%", marginLeft: "22%" }}>

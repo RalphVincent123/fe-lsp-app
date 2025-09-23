@@ -104,7 +104,12 @@ const options = {
                 type: ["USER", "ADMIN"] as Array<UserRole>,
                 input: false,
             },
+            projects: {
+                type: ["PROJECT_A", "PROJECT_B", "PROJECT_C"] as Array<Projects_Names>,
+                input: true, // kung gusto mong ma-set sa sign-up/update
+            },
         }
+        
     },
     session: {
         expiresIn: 30 * 24 * 60 * 60,
@@ -154,7 +159,7 @@ export const auth = betterAuth({
                     image: user.image,
                     createdAt: user.createdAt,
                     role: user.role,
-                    projects: Projects_Names,
+                    projects: user.projects,
                 }
             }
         }, options),

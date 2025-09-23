@@ -29,7 +29,7 @@ export default async function FeedBanner() {
   return (
     <section className={styles.main}>
       <div className={styles.container}>
-        <Posting />
+        <Posting projects={session?.user.projects} />
         <PostBanner />
       </div>
       <div className={styles.mainFeedRight}>
@@ -38,7 +38,7 @@ export default async function FeedBanner() {
         </div>
         <h2>Members</h2>
         <div>
-          {session?.user.role === "ADMIN"
+          {session?.user.projects == undefined
             ? records.map((user: User) => (
                 <div key={user.id} className={styles.sidebarItem}>
                   <div className={styles.accountInfo}>
@@ -57,12 +57,8 @@ export default async function FeedBanner() {
                 </div>
               ))
             : records
-                .filter((user: User) =>
-                  [
-                    Projects_Names.PROJECT_A,
-                    Projects_Names.PROJECT_B,
-                    Projects_Names.PROJECT_C,
-                  ].includes(user?.projects)
+                .filter(
+                  (user: User) => user.projects === session?.user.projects
                 )
                 .map((user: User) => (
                   <div key={user.id} className={styles.sidebarItem}>
