@@ -57,7 +57,9 @@ export default function NotificationPanel({
       <div className={`${styles.notifications} ${open ? styles.open : ""}`}>
         <div className={styles.header}>
           <h3>Notifications</h3>
-          <button onClick={() => setOpen(false)}>X</button>
+          <button className={styles.button} onClick={() => setOpen(false)}>
+            X
+          </button>
         </div>
 
         <div className={styles.list}>
