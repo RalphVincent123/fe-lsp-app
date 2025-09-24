@@ -1,7 +1,7 @@
 import styles from "@/styles/adminDashboard.module.scss";
 import TableContent from "./tableContent";
-import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
+// import { headers } from "next/headers";
+// import { auth } from "@/lib/auth";
 import UserListstable from "./UserListstable";
 // import BarChart from "./BarChart";
 import { Projects_Names, UserRole } from "@prisma/client";

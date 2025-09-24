@@ -6,11 +6,6 @@ import { PostActions } from "@/lib/actions/PostAction";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { Projects_Names } from "@prisma/client";
-
-// type UserProps = {
-//   projects?: Projects_Names | undefined;
-// };
 
 export default function Posting() {
   const [isPending, setIsPending] = useState(false);

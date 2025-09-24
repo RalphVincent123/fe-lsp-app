@@ -29,7 +29,7 @@ export default async function FeedBanner() {
   return (
     <section className={styles.main}>
       <div className={styles.container}>
-        <Posting projects={session?.user.projects} />
+        <Posting />
         <PostBanner />
       </div>
       <div className={styles.mainFeedRight}>
