@@ -88,6 +88,7 @@ export async function GET(req: Request) {
             email: true,
             role: true,
             projects: true,
+            image: true,
           },
         },
       },

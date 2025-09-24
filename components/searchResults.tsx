@@ -32,6 +32,8 @@ function SearchResults({ loading, results }: SearchResultsProps) {
   if (!results || results.length === 0) {
     return <p className={styles.noResults}>❌ Result not found</p>;
   }
+
+  console.log(results);
   return (
     <div className={styles.posts}>
       {results.map((rase: Post) => {

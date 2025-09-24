@@ -171,7 +171,7 @@ export default function AccountsTable({ users }: AccountsTableProps) {
                   <td>{users.role}</td>
                   <td>
                     <button onClick={() => handleEditClick(users)}>Edit</button>
-                    <a href="#">Delete</a>
+                    {/* <a href="#">Delete</a> */}
                   </td>
                 </tr>
               )

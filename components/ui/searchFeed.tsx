@@ -67,11 +67,11 @@ export default async function SearchFeed({
                     alt="Profile Pic"
                   />
                   <div>
-                    <Link href="#">{user.name}</Link>
+                    <span>{user.name}</span>
                     <p>{user.email}</p>
                   </div>
                 </div>
-                <Link href="#">{user.role}</Link>
+                <span>{user.role}</span>
               </div>
             ))}
         </div>
