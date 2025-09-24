@@ -38,8 +38,6 @@ export const SignOutButton = () => {
 
     await signOut({
       fetchOptions: {
-        onRequest: () => setIsPending(true),
-        onResponse: () => setIsPending(false),
         onError: (ctx) => {
           toast.error(ctx.error.message);
         },

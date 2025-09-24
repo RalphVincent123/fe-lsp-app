@@ -61,7 +61,7 @@ export default function Posting() {
 
         <button
           type="submit"
-          disabled={isPending || textValue.trim() === ""}
+          disabled={textValue.trim() === ""}
           className={styles.button}
         >
           Submit
