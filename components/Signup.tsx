@@ -165,7 +165,7 @@ export default function SignUpForm() {
         {/* Signup */}
         <p className={styles.footerText}>
           Do you have Existing Account ? &nbsp;
-          <Link href="/register" className={styles.signupLink}>
+          <Link href="/" className={styles.signupLink}>
             Login
           </Link>
         </p>

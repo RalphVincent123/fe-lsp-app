@@ -45,7 +45,7 @@ export default async function dashboardPage({
     return redirect("/admin");
   }
 
-  const { slug = [] } = params;
+  const { slug = [] } = await params;
 
   if (slug.length === 0)
     return (

@@ -3,7 +3,7 @@ import styles from "@/styles/feedBanner.module.scss";
 import SearchFunction from "../SearchFunction";
 import SearchResults from "../searchResults";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import sourceImage from "@/public/icons8-user.svg";
 import { Projects_Names, UserRole } from "@prisma/client";
 import { headers } from "next/headers";

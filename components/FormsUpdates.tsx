@@ -29,9 +29,8 @@ export default function FormsUpdates({ user }: UpdateUserProps) {
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
 
-  // function imageLoader(config: any) {
-  //   return config.src;
-  // }
+  const [name, setnames] = useState(user.name || "");
+
   function imageLoader(config: ImageLoaderProps): string {
     return config.src;
   }
@@ -177,7 +176,12 @@ export default function FormsUpdates({ user }: UpdateUserProps) {
         <div className={styles.grid}>
           <div className={styles.field}>
             <label>Username</label>
-            <input type="text" name="name" placeholder={user.name} />
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setnames(e.target.value)}
+            />
           </div>
 
           <div className={styles.field}>

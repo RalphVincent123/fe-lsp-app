@@ -25,10 +25,18 @@
   z-index: 9999; /* pinakataas */
 
   .button {
-    background: rgb(5, 150, 240);
+    background: #e2e2e3;
     border-radius: 50%;
     width: 42.5px;
     height: 42.5px;
+    border: none;
+
+    &:hover{
+      // width: 300px;
+      background: rgb(5, 150, 240);
+      transition: all 1s;
+      cursor: pointer;
+    }
   }
 
   .triggerWrapper {

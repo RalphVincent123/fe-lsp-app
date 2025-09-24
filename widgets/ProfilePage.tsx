@@ -1,6 +1,6 @@
 import LeftsideBar from "@/components/ui/leftSidebar";
 import styles from "@/app/page.module.css";
-import FeedBanner from "@/components/ui/FeedBanner";
+// import FeedBanner from "@/components/ui/FeedBanner";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";

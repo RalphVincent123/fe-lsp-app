@@ -123,6 +123,69 @@
       margin-left: 6px;
     }
   }
+  .texts {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #000;
+  }
+
+  .selects{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 8px;
+  }
+
+  .edit {
+      width: 100%;
+      padding: 8px;
+      border: 2px solid #04ba5c;
+      transition: all 1s;
+      background: #ffffff;
+      font-weight: bold;
+      border-radius: 8px;
+
+      &:hover {
+        transition: all 1s;
+        background:#04ba5c ;
+      }
+    }
+
+  .actionButton {
+    display: flex;
+    gap: 25px;
+
+    .save {
+      width: 100%;
+      padding: 8px;
+      border: 2px solid #04ba5c;
+      transition: all 1s;
+      background: #ffffff;
+      font-weight: bold;
+      border-radius: 8px;
+
+      &:hover {
+        transition: all 1s;
+        background:#04ba5c ;
+      }
+    }
+    .cancel {
+      width: 100%;
+      padding: 8px;
+      border: 2px solid #831717;
+      transition: all 1s;
+      background: #ffffff;
+      font-weight: bold;
+      border-radius: 8px;
+
+      &:hover {
+        color: #ffffff;
+        transition: all 1s;
+        background:#831717;
+      }
+    }
+  }
 
   /* ✅ Responsive adjustments */
   @media (max-width: 660px) {

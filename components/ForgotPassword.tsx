@@ -1,9 +1,11 @@
 "use client";
-import style from "@/styles/forgotPasswordForm.module.scss";
+// import style from "@/styles/forgotPasswordForm.module.scss";
+import styles from "@/styles/loginForm.module.scss";
 import { forgetPassword } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Link from "next/link";
 export default function ForgotPasswordForm() {
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
@@ -37,28 +39,41 @@ export default function ForgotPasswordForm() {
     });
   }
   return (
-    <div className={style.main}>
-      <form className={style.container} onSubmit={handleSubmit}>
-        <div className={style.logForm}>
-          <div className={style.title}>Log in to continue</div>
-          <div className={style.formsFields}>
-            <label htmlFor="email" className={style.passwordLabel}>
-              Email Address
-            </label>
-            <input
-              type="email"
-              className={style.passwordFields}
-              name="email"
-              id="email"
-              placeholder="Enter your Email Address"
-            />
-          </div>
-          <div className={style.submitButton}>
-            <button disabled={isPending} className={style.buttonLogin}>
-              Send
-            </button>
-          </div>
+    <div className={styles.main}>
+      <form className={styles.signInForm} onSubmit={handleSubmit}>
+        <span className={styles.title} style={{ marginBottom: "25px" }}>
+          Forgot Password
+        </span>
+
+        <label htmlFor="email" className={styles.label}>
+          Email Address
+        </label>
+        <input
+          name="email"
+          id="email"
+          type="email"
+          placeholder="sample@example.com"
+          className={styles.input}
+        />
+
+        {/* Submit */}
+        <div className={styles.submitContainer}>
+          <button
+            type="submit"
+            disabled={isPending}
+            className={styles.submitButton}
+          >
+            Send
+          </button>
         </div>
+
+        {/* Signup */}
+        <p className={styles.footerText}>
+          Not registered yet?{" "}
+          <Link href="/register" className={styles.signupLink}>
+            Create an Account
+          </Link>
+        </p>
       </form>
     </div>
   );

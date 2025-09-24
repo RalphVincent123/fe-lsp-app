@@ -1,10 +1,11 @@
 "use client";
-import style from "@/styles/forgotPasswordForm.module.scss";
+// import style from "@/styles/forgotPasswordForm.module.scss";
+import styles from "@/styles/loginForm.module.scss";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { resetPassword } from "@/lib/auth-client";
-
+import Link from "next/link";
 interface ResetPasswordProps {
   token: string;
 }
@@ -46,42 +47,51 @@ export default function ResetPasswordForm({ token }: ResetPasswordProps) {
     });
   }
   return (
-    <div className={style.main}>
-      <form className={style.container} onSubmit={handleSubmit}>
-        <div className={style.logForm}>
-          <div className={style.title}>Reset Password</div>
-          <div className={style.formsFields}>
-            <label htmlFor="password" className={style.passwordLabel}>
-              Password
-            </label>
-            <input
-              type="password"
-              className={style.passwordFields}
-              name="password"
-              id="password"
-              placeholder="******"
-            />
-            <label htmlFor="password" className={style.passwordLabel}>
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              className={style.passwordFields}
-              name="confirmPassword"
-              id="confirmPassword"
-              placeholder="******"
-            />
-          </div>
-          <div className={style.submitButton}>
-            <button
-              type="submit"
-              className={style.buttonLogin}
-              disabled={isPending}
-            >
-              Reset Password
-            </button>
-          </div>
+    <div className={styles.main}>
+      <form className={styles.signInForm} onSubmit={handleSubmit}>
+        <span className={styles.title} style={{ marginBottom: "25px" }}>
+          Forgot Password
+        </span>
+
+        <label htmlFor="password" className={styles.label}>
+          New Password
+        </label>
+        <input
+          name="password"
+          id="password"
+          type="password"
+          placeholder="*****"
+          className={styles.input}
+        />
+        <label htmlFor="confirmPassword" className={styles.label}>
+          Confirm Password
+        </label>
+
+        <input
+          type="password"
+          name="confirmPassword"
+          id="confirmPassword"
+          placeholder="******"
+          className={styles.input}
+        />
+        {/* Submit */}
+        <div className={styles.submitContainer}>
+          <button
+            type="submit"
+            disabled={isPending}
+            className={styles.submitButton}
+          >
+            Send
+          </button>
         </div>
+
+        {/* Signup */}
+        <p className={styles.footerText}>
+          Not registered yet?{" "}
+          <Link href="/register" className={styles.signupLink}>
+            Create an Account
+          </Link>
+        </p>
       </form>
     </div>
   );

@@ -7,6 +7,7 @@ import Link from "next/link";
 import sourceImage from "@/public/icons8-user.svg";
 import Image from "next/image";
 import { Projects_Names, UserRole } from "@prisma/client";
+import toast from "react-hot-toast";
 
 interface User {
   id: string;
@@ -44,9 +45,11 @@ export default function AccountsTable({ users }: AccountsTableProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editFormData),
       });
+      toast.success("Post updated successfully 🎉");
       setIsEditId(null);
     } catch (err) {
       console.error(err);
+      toast.error("Something went wrong");
     }
   }
 
@@ -100,6 +103,7 @@ export default function AccountsTable({ users }: AccountsTableProps) {
                   </td>
                   <td>
                     <input
+                      className={style.texts}
                       type="text"
                       name="name"
                       placeholder={users.name}
@@ -109,6 +113,7 @@ export default function AccountsTable({ users }: AccountsTableProps) {
                   </td>
                   <td>
                     <input
+                      className={style.texts}
                       type="email"
                       name="email"
                       placeholder={users.email}
@@ -118,6 +123,7 @@ export default function AccountsTable({ users }: AccountsTableProps) {
                   </td>
                   <td>
                     <select
+                      className={style.selects}
                       name="project"
                       id="project"
                       value={editFormData.project}
@@ -136,6 +142,7 @@ export default function AccountsTable({ users }: AccountsTableProps) {
                   </td>
                   <td>
                     <select
+                      className={style.selects}
                       name="role"
                       id="role"
                       value={editFormData.role}
@@ -149,9 +156,20 @@ export default function AccountsTable({ users }: AccountsTableProps) {
                     </select>
                   </td>
                   <td>
-                    <button onClick={() => handleSave(users.id)}>Save</button>
-                    <button onClick={() => setIsEditId(null)}>Cancel</button>
-                    <a href="#">Delete</a>
+                    <div className={style.actionButton}>
+                      <button
+                        className={style.save}
+                        onClick={() => handleSave(users.id)}
+                      >
+                        Save
+                      </button>
+                      <button
+                        className={style.cancel}
+                        onClick={() => setIsEditId(null)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ) : (
@@ -170,7 +188,13 @@ export default function AccountsTable({ users }: AccountsTableProps) {
                   <td>{users.projects}</td>
                   <td>{users.role}</td>
                   <td>
-                    <button onClick={() => handleEditClick(users)}>Edit</button>
+                    <button
+                      className={style.edit}
+                      onClick={() => handleEditClick(users)}
+                    >
+                      Edit
+                    </button>
+
                     {/* <a href="#">Delete</a> */}
                   </td>
                 </tr>

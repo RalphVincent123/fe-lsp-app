@@ -10,6 +10,7 @@ import { Projects_Names, UserRole } from "@prisma/client";
 import { useState } from "react";
 import NotificationPanel from "./NotificationPanel";
 import type { ImageLoaderProps } from "next/image";
+import { IoMdSettings } from "react-icons/io";
 
 interface sideBarProps {
   user: {
@@ -32,7 +33,7 @@ export default function LeftsideBar({ user }: sideBarProps) {
   }
   return (
     <div className={styles.main}>
-      <span className={styles.logo}>ActivityGram</span>
+      <span className={styles.logo}>ActivityPrism</span>
       <nav>
         <Link href="/home">
           <Image
@@ -64,7 +65,7 @@ export default function LeftsideBar({ user }: sideBarProps) {
             {open && (
               <div className={styles.dropdownContent}>
                 <Link href="/home/profile" className={styles.active}>
-                  <IoHome className={styles.icons} />
+                  <IoMdSettings className={styles.icons} />
                   Update Profile
                 </Link>
               </div>
@@ -75,8 +76,6 @@ export default function LeftsideBar({ user }: sideBarProps) {
                 <span>Notifications</span>
               </Link>
             </NotificationPanel>
-
-            <SignOutButton />
           </>
         )}
         {user.role === "ADMIN" && (
@@ -89,9 +88,9 @@ export default function LeftsideBar({ user }: sideBarProps) {
               <IoMdNotifications className={styles.icons} />
               <span>Accounts</span>
             </Link>
-            <SignOutButton />
           </>
         )}
+        <SignOutButton />
       </nav>
     </div>
   );
